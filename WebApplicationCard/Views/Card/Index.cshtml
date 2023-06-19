@@ -1,0 +1,68 @@
+﻿@model List<WebApplicationCard.Models.CardViewModel>
+
+<div class="container">
+	<div class="head">
+		<h1 class="">Identification Card</h1>
+	</div>
+	<br />
+	<div class="box-model">
+		<div class="form-group d-grid gap-4 d-flex justify-content-center rowbtn ">
+			<input type="button" value="ADD Card" id="" onclick="location.href='@Url.Action("Create", "Card")'" class="btn btn-warning edit " />
+		</div>
+		<form class="" id="idCardRegister" method="get" enctype="multipart/form-data" action="@Url.Action("Index", "Card")">
+			<div class="input-group row">
+				<input type="text" class="form-control rounded col-8" placeholder="ค้นหาเลขบัตรประชาชน" name="SearchString" />
+			</div>
+			<div class="form-group">
+				<input type="submit" class="btn btn-outline-warning col-3" value="Search" />
+				<input type="button" id="" onclick="location.href='@Url.Action("Index", "Card")'" value="Back to List" class="btn btn-outline-dark float-end pos" />
+			</div>
+		</form>
+
+		<br />
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">ภาพ</th>
+						<th style="width:17%" scope="col">เลขบัตรประจำตัวประชาชน</th>
+						<th style="width:13%" scope="col">ชื่อ</th>
+						<th style="width:10%" scope="col">นามสกุล</th>
+						<th scope="col">วันเกิด</th>
+						<th scope="col">ศาสนา</th>
+						<th scope="col">ที่อยู่</th>
+						<th style="width:14%" scope="col"></th>
+					</tr>
+				</thead>
+				<tbody>
+					@if (Model != null && Model.Any())
+					{
+						@foreach (var item in Model)
+						{
+							<tr>
+								<td hidden>@item.IdCard</td>
+								<td>
+									<img src="~/images/@item.ImageUrl" style="width:50px; height:50px;" />
+								</td>
+								<td onclick="location.href='@Url.Action("Create", "Card",new {IdCard =item.IdCard})'">@item.IdNum </td>
+								<td>@item.FristName</td>
+								<td>@item.LastName</td>
+								<td>@item.Birthday.ToString("dd/MM/yyyy")</td>
+								<td>@item.Religion</td>
+								<td>@item.Address</td>
+								<td hidden>@item.Outday</td>
+								<td hidden>@item.EXPday</td>
+								<td>
+									<div class="btn btn-group-sm">
+										<input type="button" id="" onclick="location.href='@Url.Action("Create", "Card",new {IdCard =item.IdCard})'" value="EDIT" class="btn btn-primary" />
+										<input type="submit" id="" onclick="return confirm('Are you sure to delete?'),location.href='@Url.Action("Delete", "Card",new {IdCard =item.IdCard})'" value="DELETE" class="btn btn-danger" />
+									</div>
+								</td>
+							</tr>
+						}
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,134 @@
+﻿@model  WebApplicationCard.Models.CardViewModel
+@{
+    ViewData["Title"] = "Delete CARD";
+    bool editState = (bool)ViewBag.IsEditState;
+}
+
+<div class="container-md">
+    <div class="head">
+         <h1 class="">Identification Card</h1>
+    </div>
+    <br />
+    <form class="" id="idCardRegister" method="post" enctype="multipart/form-data" action="@Url.Action("Create", "Card")" novalidate >
+      <div class="box-model">
+             <div class="box-model-detail">
+             <div class="row">
+        <div class="col-4 ">
+            <div class=" d-flex justify-content-center">
+                 @if (editState)
+                    {
+                   <img src="~/images/@Model.ImageUrl" alt="" style="width: 350px; height:320px;"  />
+                     }
+                 @if (!editState)
+                    {
+                        <img src="https://icon-library.com/images/icon-for-images/icon-for-images-13.jpg" alt="" style="width: 350px; height:320px;"  />
+                     }
+            </div>
+             <div class="feedback" id="checkPic"> </div>
+            <div class="d-flex justify-content-center">
+                <div class="btn btn-primary btn-rounded">
+                    <label class="form-label text-white m-1" for="Picture">Choose file</label>
+                    <input type="file" class="form-control d-none" name="Picture" id="Picture" accept=".jpg, .pdf, .png"
+                    onchange="document.getElementById('ImagePic').src = window.URL.createObjectURL(this.files[0])" required/>
+                </div>
+             
+            </div>
+        </div>
+          <div class="col-8 row">
+               <div class="form-group row">
+                    <input name="IdCard" id="IdCard" type="text" class="form-control" value="@Model.IdCard" required hidden/>
+                <label for="IdNum" class="col-3 text-right">ID card number :</label>
+                    <div class="col-8">
+                @if (editState)
+                    {
+                      <input name="IdNum" id="IdNum" type="text" class="form-control"  value="@Model.IdNum" required  />
+                    }
+                @if (!editState)
+                    {
+                       <input name="IdNum" id="IdNum" type="text" class="form-control"  value=" " required  />
+                     }
+                        
+                        <div class="invalid-feedback" id="checkDomainName"> </div>
+                    </div>
+               </div>
+              <div class="form-group row">
+                <label for="FristName" class="col-3 text-right">ชื่อ :</label>
+                    <div class="col-3">
+                          <input name="FristName" id="FristName" type="text" class="form-control" value="@Model?.FristName"required />
+                        <div class="invalid-feedback" id="checkDomainName"> </div>
+                    </div>
+                     <label for="LastName" class="col-2 text-right">นามสกุล :</label>
+                    <div class="col-3">
+                          <input name="LastName" id="LastName" type="text" class="form-control" value="@Model?.LastName"  required />
+                        <div class="invalid-feedback" id="checkDomainName"> </div>
+                    </div>
+               </div>
+               <div class="form-group row">
+                    <label for="Birthday" class="col-3 text-right">วันเกิด :</label>
+                        <div class="col-3">
+                @if (editState)
+                    {
+                  <input name="Birthday" id="Birthday" type="date" class="form-control"  value="@Model?.Birthday.ToString("yyyy-MM-dd")" required  />
+                     }
+                 @if (!editState)
+                    {
+                       <input name="Birthday" id="Birthday" type="date" class="form-control" value=""  required />
+                     }
+                              
+                            <div class="invalid-feedback" id="checkDomainName"> </div>
+                        </div>
+                    <label for="Religion" class="col-2 text-right">ศาสนา :</label>
+                        <div class="col-3">
+                              <input name="Religion" id="Religion" type="text" class="form-control" value="@Model?.Religion"  required />
+                            <div class="invalid-feedback" id="checkDomainName"> </div>
+                        </div>
+               </div>
+               <div class="form-group row">
+                    <label for="Address" class="col-3 text-right">ที่อยู่ :</label>
+                        <div class="col-8">
+                              <input name="Address" id="Address" type="text" class="form-control" value="@Model?.Address"  required />
+                            <div class="invalid-feedback" id="checkDomainName"> </div>
+                        </div>
+               </div>
+                <div class="form-group row">
+                    <label for="Outday" class="col-3 text-right">วันออกบัตร :</label>
+                        <div class="col-3">
+                    @if (editState)
+                    {
+                        <input name="Outday" id="Outday" type="date" class="form-control" value="@Model?.Outday.ToString("yyyy-MM-dd")"  required />
+                     }
+                     @if (!editState)
+                    {
+                        <input name="Outday" id="Outday" type="date" class="form-control" value=" "  required />
+                     }
+                             
+                            <div class="invalid-feedback" id="checkDomainName"> </div>
+                        </div>
+                    <label for="EXPday" class="col-2 text-right">วันหมดอายุ :</label>
+                        <div class="col-3">
+                             @if (editState)
+                    {
+                              <input name="EXPday" id="EXPday" type="date" class="form-control" value="@Model?.EXPday.ToString("yyyy-MM-dd")"  required />
+                     }
+                       @if (!editState)
+                    {
+                        <input name="EXPday" id="EXPday" type="date" class="form-control" value=""  required />
+                     }
+                            <div class="invalid-feedback" id="checkDomainName"> </div>
+                        </div>
+               </div>
+                 <div class="form-group d-grid gap-4 d-flex justify-content-center rowbtn ">
+                     <input type="submit" value="SUBMIT" id="buttonsaveContact" onclick="Step2validation()" class="btn btn-info edit md-5" />
+                     <input type="reset" value="CANCEL" onclick="location.href='@Url.Action("Index", "Card")'" class="btn btn-danger edit " />
+                 </div>
+        </div>
+        </div>
+        </div>
+        
+       
+    </div>
+    </form>
+    
+</div>
+
+

@@ -1,0 +1,95 @@
+html {
+    font-size: 14px;
+    align-items:center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Prompt', sans-serif;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.row {
+    align-items: center;
+    padding: 15px;
+}
+
+.box-model {
+    border: 0.15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    padding: 20px;
+}
+
+.col {
+    align-items: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.rowbtn {
+    max-width: 40rem;
+    margin: auto;
+    padding: 30px 30px 30px 30px;
+}
+
+.edit {
+    width: 50%;
+    height: 60px;
+}
+
+.pic {
+    border: 0.15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    padding: 50px;
+}
+
+.head {
+    margin:20px 0px 0px 0px;
+    padding: 30px;
+    background-color: cornsilk;
+    border: 0.15px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+th,td {
+    vertical-align: middle;
+/*    white-space: nowrap;*/
+}
+
+.feedback{
+    text-align:center;
+    padding:10px;
+    color:crimson;
+}
+.pos{
+    margin-right:30px;
+}
+table {
+    table-layout: auto;
+   
+}
+non {
+    white-space:unset;
+}
